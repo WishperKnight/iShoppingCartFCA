@@ -1,5 +1,6 @@
 package ies.carrillo.ishoppingcartfca.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -26,6 +27,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadingComponents(){
-
+        Intent seeDetails = new Intent(this, DetailsActivity.class);
     }
 }

@@ -1,4 +1,9 @@
 package ies.carrillo.ishoppingcartfca.models;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
+    private int id;
+    private String note ="", name="";
+    private boolean buy =false;
 }
