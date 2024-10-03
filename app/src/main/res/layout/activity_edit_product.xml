@@ -13,10 +13,10 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tvEditTittle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="Edit Product Activity" />
 
         <TableLayout
             android:layout_width="match_parent"
@@ -28,18 +28,17 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/tvProductOldName"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:layout_height="wrap_content" />
 
                 <EditText
-                    android:id="@+id/editTextText2"
+                    android:id="@+id/etNewName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="text"
-                    android:text="Name" />
+                    android:hint="Name"
+                    android:inputType="text" />
             </TableRow>
 
             <TableRow
@@ -47,16 +46,16 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/tvProductOldNote"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:layout_height="wrap_content" />
 
                 <EditText
-                    android:id="@+id/editTextTextMultiLine2"
+                    android:id="@+id/etNewNote"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:hint="short Note"
                     android:gravity="start|top"
                     android:inputType="textMultiLine" />
             </TableRow>
@@ -66,10 +65,10 @@
                 android:layout_height="match_parent">
 
                 <Switch
-                    android:id="@+id/switch2"
+                    android:id="@+id/SwitchOldState"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Switch" />
+                    android:text="Buy" />
             </TableRow>
 
         </TableLayout>
@@ -81,18 +80,18 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/btnCancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:text="Cancel" />
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/btnEditDone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:text="Save" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

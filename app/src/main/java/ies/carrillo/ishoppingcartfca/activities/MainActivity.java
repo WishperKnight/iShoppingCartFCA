@@ -28,5 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadingComponents(){
         Intent seeDetails = new Intent(this, DetailsActivity.class);
+
     }
 }
