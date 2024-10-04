@@ -17,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import ies.carrillo.ishoppingcartfca.R;
 import ies.carrillo.ishoppingcartfca.models.Product;
+import ies.carrillo.ishoppingcartfca.models.Products;
 
 /**
  * Class for edit the atributes of an product
@@ -82,7 +83,7 @@ public class EditProductActivity extends AppCompatActivity {
             String finalNewName2 = newName;
             String finalNewNote2 = newNote;
 
-            btnEditProduct.setOnClickListener(v -> editproduct(p, finalNewName2, finalNewNote2, buy.isChecked()));
+            btnEditProduct.setOnClickListener(v -> Products.products.add(editproduct(p, finalNewName2, finalNewNote2, buy.isChecked())));
         }
 
         btnCancel.setOnClickListener(v -> startActivity(cancel));

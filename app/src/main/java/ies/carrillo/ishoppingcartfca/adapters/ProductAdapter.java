@@ -14,10 +14,11 @@ import java.util.List;
 
 import ies.carrillo.ishoppingcartfca.R;
 import ies.carrillo.ishoppingcartfca.models.Product;
+import ies.carrillo.ishoppingcartfca.models.Products;
 
 public class ProductAdapter extends ArrayAdapter<Product> {
 
-    private final List<Product> products;
+    private List<Product> products = (List<Product>) Products.products.clone();
 
     /**
      * Constructor for the adapter
