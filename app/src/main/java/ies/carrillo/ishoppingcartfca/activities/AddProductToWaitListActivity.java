@@ -2,6 +2,7 @@ package ies.carrillo.ishoppingcartfca.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,8 +11,14 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import ies.carrillo.ishoppingcartfca.R;
+import ies.carrillo.ishoppingcartfca.adapters.ProductAdapter;
+import ies.carrillo.ishoppingcartfca.models.Product;
+import ies.carrillo.ishoppingcartfca.dataBase.DataBase;
 
 public class AddProductToWaitListActivity extends AppCompatActivity {
+    private Intent cancel;
+    private Spinner productSpinner;
+    private ProductAdapter productAdapterSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +31,16 @@ public class AddProductToWaitListActivity extends AppCompatActivity {
             return insets;
         });
     }
-    private void loadingComponents(){
-        Intent cancel = new Intent(this, MainActivity.class);
+
+    private void loadingComponents() {
+        cancel = new Intent(this, MainActivity.class);
+        productSpinner = findViewById(R.id.spinner);
+        productAdapterSpinner = new ProductAdapter(AddProductToWaitListActivity.this, 0, DataBase.getProducts());
+        productSpinner.setAdapter(productAdapterSpinner);
+
+    }
+
+    private void addProductToWaitList(Product p) {
+        p.setBuy(false);
     }
 }

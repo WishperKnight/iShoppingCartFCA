@@ -14,17 +14,17 @@ import java.util.List;
 
 import ies.carrillo.ishoppingcartfca.R;
 import ies.carrillo.ishoppingcartfca.models.Product;
-import ies.carrillo.ishoppingcartfca.models.Products;
+import ies.carrillo.ishoppingcartfca.dataBase.DataBase;
 
 public class ProductAdapter extends ArrayAdapter<Product> {
-
-    private List<Product> products = (List<Product>) Products.products.clone();
+    private List<Product> products = DataBase.getProducts();
 
     /**
      * Constructor for the adapter
-     * @param context app context
+     *
+     * @param context  app context
      * @param resource id from the xml
-     * @param objects objects from the models
+     * @param objects  objects from the models
      */
     public ProductAdapter(@NonNull Context context, int resource, @NonNull List<Product> objects) {
         super(context, resource, objects);
@@ -55,5 +55,21 @@ public class ProductAdapter extends ArrayAdapter<Product> {
 
         return convertView;
 
+    }
+
+    /**
+     *
+     * @param position
+     * @param convertview
+     * @param parent
+     * @return
+     */
+    @Override
+    public View getDropDownView(int position, View convertview, ViewGroup parent) {
+        Product p = products.get(position);
+        if (convertview == null) {
+            convertview = LayoutInflater.from(getContext()).inflate(R.layout.product_item, parent, false);
+        }
+        return convertview;
     }
 }

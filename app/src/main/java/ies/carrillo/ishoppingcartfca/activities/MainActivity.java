@@ -2,6 +2,7 @@ package ies.carrillo.ishoppingcartfca.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -13,9 +14,13 @@ import androidx.core.view.WindowInsetsCompat;
 
 import ies.carrillo.ishoppingcartfca.R;
 import ies.carrillo.ishoppingcartfca.adapters.ProductAdapter;
-import ies.carrillo.ishoppingcartfca.models.Products;
+import ies.carrillo.ishoppingcartfca.models.Product;
+import ies.carrillo.ishoppingcartfca.dataBase.DataBase;
 
 public class MainActivity extends AppCompatActivity {
+
+
+    private Log log;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +45,16 @@ public class MainActivity extends AppCompatActivity {
         Button btnAddProduct = findViewById(R.id.btnAddProduct);
 
         ListView lvProducts = findViewById(R.id.lvProducts);
-        ProductAdapter productAdapter = new ProductAdapter(this.getApplicationContext(), 0, Products.products);
+        DataBase.fillList();
+        Log.i("List", DataBase.getProducts().toString());
+        ProductAdapter productAdapter = new ProductAdapter(MainActivity.this, 0, DataBase.getProducts());
         lvProducts.setAdapter(productAdapter);
 
-
-        lvProducts.setOnItemClickListener((adapterView, view, i, l) ->  startActivity(seeDetails));
+        lvProducts.setOnItemClickListener((parent, view, position, id) ->  {
+            Product p =(Product) parent.getItemAtPosition(position);
+            seeDetails.putExtra("product", p);
+            startActivity(seeDetails);
+        });
         btnWaitList.setOnClickListener(v-> startActivity(addWaitList));
         btnAddProduct.setOnClickListener(v-> startActivity(addProduct));
 
