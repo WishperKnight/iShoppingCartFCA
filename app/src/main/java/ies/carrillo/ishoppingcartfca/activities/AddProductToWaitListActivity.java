@@ -2,6 +2,8 @@ package ies.carrillo.ishoppingcartfca.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
@@ -19,6 +21,7 @@ public class AddProductToWaitListActivity extends AppCompatActivity {
     private Intent cancel;
     private Spinner productSpinner;
     private ProductAdapter productAdapterSpinner;
+    private Button btnCancelFromAPWL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +33,22 @@ public class AddProductToWaitListActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        loadingComponents();
     }
 
     private void loadingComponents() {
-        cancel = new Intent(this, MainActivity.class);
+        cancel = new Intent(AddProductToWaitListActivity.this, MainActivity.class);
         productSpinner = findViewById(R.id.spinner);
-        productAdapterSpinner = new ProductAdapter(AddProductToWaitListActivity.this, 0, DataBase.getProducts());
+        productAdapterSpinner = new ProductAdapter(AddProductToWaitListActivity.this, 0, DataBase.getProductsDiferentsToBuy(DataBase.getProducts()));
         productSpinner.setAdapter(productAdapterSpinner);
 
+        btnCancelFromAPWL = findViewById(R.id.btnCancelFromAPWL);
+        btnCancelFromAPWL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(cancel);
+            }
+        });
     }
 
     private void addProductToWaitList(Product p) {

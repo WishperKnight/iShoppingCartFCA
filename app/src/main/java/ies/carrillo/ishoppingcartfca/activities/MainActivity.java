@@ -20,8 +20,6 @@ import ies.carrillo.ishoppingcartfca.dataBase.DataBase;
 public class MainActivity extends AppCompatActivity {
 
 
-    private Log log;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,26 +30,27 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        DataBase.fillList();
         loadingComponents();
     }
 
     private void loadingComponents(){
 
-        Intent seeDetails = new Intent(this, DetailsActivity.class);
-        Intent addWaitList = new Intent(this, AddProductToWaitListActivity.class);
-        Intent addProduct = new Intent(this, AddProductAtivity.class);
+        Intent seeDetails = new Intent(MainActivity.this, DetailsActivity.class);
+        Intent addWaitList = new Intent(MainActivity.this, AddProductToWaitListActivity.class);
+        Intent addProduct = new Intent(MainActivity.this, AddProductActivity.class);
 
         Button btnWaitList = findViewById(R.id.btnAddWaitngList);
         Button btnAddProduct = findViewById(R.id.btnAddProduct);
 
         ListView lvProducts = findViewById(R.id.lvProducts);
-        DataBase.fillList();
         Log.i("List", DataBase.getProducts().toString());
         ProductAdapter productAdapter = new ProductAdapter(MainActivity.this, 0, DataBase.getProducts());
         lvProducts.setAdapter(productAdapter);
 
         lvProducts.setOnItemClickListener((parent, view, position, id) ->  {
             Product p =(Product) parent.getItemAtPosition(position);
+            Log.i("Product", p.toString());
             seeDetails.putExtra("product", p);
             startActivity(seeDetails);
         });

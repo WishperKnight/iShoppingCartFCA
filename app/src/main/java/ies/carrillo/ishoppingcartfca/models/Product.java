@@ -1,5 +1,7 @@
 package ies.carrillo.ishoppingcartfca.models;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
 public class Product implements Serializable {
@@ -43,4 +45,15 @@ public class Product implements Serializable {
     public void setBuy(boolean buy) {
         this.buy = buy;
     }
+    @NonNull
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", note='" + note + '\'' +
+                ", buy=" + buy +
+                '}';
+    }
+
 }

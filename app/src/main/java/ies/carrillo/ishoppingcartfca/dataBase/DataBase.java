@@ -30,12 +30,12 @@ public class DataBase {
         p1.setId(generateId());
 
         p2.setName("Eggs");
-        p2.setName("Eggs");
+        p2.setNote("a pack of eggs");
         p2.setBuy(true);
         p2.setId(generateId());
 
         p3.setName("Hello kitty T-shirt");
-        p3.setName("Hello kitty T-shirt");
+        p3.setNote("a hell kitten shirt for kids");
         p3.setBuy(true);
         p3.setId(generateId());
 
@@ -54,7 +54,13 @@ public class DataBase {
     }
 
     public static int generateId() {
-        return products.size();
+        int id = 0;
+        for (Product p : products) {
+            if (p.getId() > id) {
+                id = p.getId();
+            }
+        }
+        return id+1;
     }
 
     /*   public static ArrayList<Product> getProductsToBuy(ArrayList<Product> products) {
@@ -68,7 +74,7 @@ public class DataBase {
     public static List<Product> getProductsDiferentsToBuy(List<Product> products) {
         List<Product> productsDiferentsToBuy = new ArrayList<>();
         for (Product p : products) {
-            if (!p.isBuy()) {
+            if (p.isBuy()) {
                 productsDiferentsToBuy.add(p);
             }
         }

@@ -3,4 +3,15 @@
     <string name="ishoppinglistfca">iShoppingListFCA</string>
     <string name="wait_list">Wait List</string>
     <string name="add_product">Add Product</string>
+    <string name="buy">Buy</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="name">Name:</string>
+    <string name="short_note">Short note:</string>
+    <string name="product_adder">Product Adder</string>
+    <string name="product_details">Product Details</string>
+    <string name="id">Id:</string>
+    <string name="state">State:</string>
+    <string name="edit_product">Edit product</string>
+    <string name="back">Back</string>
 </resources>

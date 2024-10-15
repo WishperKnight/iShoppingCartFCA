@@ -16,10 +16,10 @@
             android:name=".activities.AddProductToWaitListActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.AddProductAtivity"
+            android:name=".activities.AddProductActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.EditProduct"
+            android:name=".activities.EditProductActivity"
             android:exported="false" />
         <activity
             android:name=".activities.DetailsActivity"

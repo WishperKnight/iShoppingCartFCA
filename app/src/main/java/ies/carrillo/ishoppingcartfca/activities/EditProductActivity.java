@@ -3,6 +3,8 @@ package ies.carrillo.ishoppingcartfca.activities;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
@@ -38,53 +40,51 @@ public class EditProductActivity extends AppCompatActivity {
             return insets;
         });
         loadingComponents();
+
+
     }
 
     /**
      * Method for load the components of the view
      */
     private void loadingComponents() {
-        Product p = null;
+        //declare a product object
+        Product product;
+
         Intent cancel = new Intent(this, MainActivity.class);
+        Intent data = getIntent();
+        Intent showEdited = new Intent(this, DetailsActivity.class);
+
+        //get the product from the intent
+        product = (Product) data.getSerializableExtra("product");
+        //show the datas on the log
+        Log.i("Product", product.toString());
+
+        //action butttons
         Button btnEditProduct = findViewById(R.id.btnEditDone);
         Button btnCancel = findViewById(R.id.btnCancel);
+
+        //Components of the view
         TextView name = findViewById(R.id.tvProductOldName);
         TextView note = findViewById(R.id.tvProductOldNote);
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch buy = findViewById(R.id.SwitchOldState);
         EditText nName = findViewById(R.id.etNewName);
         EditText nNote = findViewById(R.id.etNewNote);
 
-        loadData(p);
-        String newName = nName.getText().toString();
-        String newNote = nNote.getText().toString();
 
-        if (!(newName.isBlank() && newNote.isBlank())) {
-            String finalNewName = newName;
-            String finalNewNote = newNote;
-            btnEditProduct.setOnClickListener(v -> editproduct(p, finalNewName, finalNewNote, buy.isChecked()));
-        } else if (!(newName.isBlank())) {
+        loadData(product);
+        Log.i("Product on edition", product.toString());
 
-            newName = name.getText().toString();
-            String finalNewName1 = newName;
-            String finalNewNote3 = newNote;
-            btnEditProduct.setOnClickListener(v -> editproduct(p, finalNewName1, finalNewNote3, buy.isChecked()));
 
-        } else if (!(newNote.isBlank())) {
+        btnEditProduct.setOnClickListener(v -> {
+            Log.i("Name taken: ", nName.getText().toString());
+            Log.i("Note taken: ", nNote.getText().toString());
+            Log.i("Buy taken: ", String.valueOf(buy.isChecked()));
 
-            newNote = name.getText().toString();
-            String finalNewNote1 = newNote;
-            String finalNewName3 = newName;
-            btnEditProduct.setOnClickListener(v -> editproduct(p, finalNewName3, finalNewNote1, buy.isChecked()));
-
-        } else {
-            newNote = name.getText().toString();
-            newName = name.getText().toString();
-
-            String finalNewName2 = newName;
-            String finalNewNote2 = newNote;
-
-            btnEditProduct.setOnClickListener(v -> DataBase.products.add(editproduct(p, finalNewName2, finalNewNote2, buy.isChecked())));
-        }
+            editproduct(product, nName.getText().toString(), nNote.getText().toString(), buy.isChecked());
+            showEdited.putExtra("product", product);
+            startActivity(showEdited);
+        });
 
         btnCancel.setOnClickListener(v -> startActivity(cancel));
     }
@@ -99,9 +99,18 @@ public class EditProductActivity extends AppCompatActivity {
      * @return Product edited
      */
     private Product editproduct(@NonNull Product p, String name, String note, boolean buy) {
+        Log.i("Button pressed", "Product editing");
+
+        Log.i("Name: ", name);
+        Log.i("Note: ", note);
+        Log.i("Buy: ", String.valueOf(buy));
+
         p.setBuy(buy);
         p.setName(name);
         p.setNote(note);
+
+        Log.i("Product edited", p.toString());
+        DataBase.getProducts().set(p.getId() - 1, p);
         return p;
     }
 

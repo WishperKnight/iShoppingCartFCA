@@ -14,10 +14,9 @@ import java.util.List;
 
 import ies.carrillo.ishoppingcartfca.R;
 import ies.carrillo.ishoppingcartfca.models.Product;
-import ies.carrillo.ishoppingcartfca.dataBase.DataBase;
 
 public class ProductAdapter extends ArrayAdapter<Product> {
-    private List<Product> products = DataBase.getProducts();
+    private final List<Product> products;
 
     /**
      * Constructor for the adapter
@@ -65,7 +64,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
      * @return
      */
     @Override
-    public View getDropDownView(int position, View convertview, ViewGroup parent) {
+    public View getDropDownView(int position, View convertview, @NonNull ViewGroup parent) {
         Product p = products.get(position);
         if (convertview == null) {
             convertview = LayoutInflater.from(getContext()).inflate(R.layout.product_item, parent, false);
