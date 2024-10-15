@@ -16,6 +16,10 @@
             android:id="@+id/tvEditTittle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:fontFamily="serif-monospace"
+            android:textAlignment="center"
             android:text="Edit Product Activity" />
 
         <TableLayout

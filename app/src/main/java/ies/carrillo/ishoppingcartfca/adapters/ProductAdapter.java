@@ -67,7 +67,9 @@ public class ProductAdapter extends ArrayAdapter<Product> {
     public View getDropDownView(int position, View convertview, @NonNull ViewGroup parent) {
         Product p = products.get(position);
         if (convertview == null) {
-            convertview = LayoutInflater.from(getContext()).inflate(R.layout.product_item, parent, false);
+            convertview = LayoutInflater.from(getContext()).inflate(R.layout.product_spinner_item, parent, false);
+            TextView tvSpinnerItem = convertview.findViewById(R.id.tvSpinnerItem);
+            tvSpinnerItem.setText(p.getName());
         }
         return convertview;
     }

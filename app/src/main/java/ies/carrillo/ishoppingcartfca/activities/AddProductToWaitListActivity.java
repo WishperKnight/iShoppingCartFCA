@@ -2,9 +2,11 @@ package ies.carrillo.ishoppingcartfca.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +24,7 @@ public class AddProductToWaitListActivity extends AppCompatActivity {
     private Spinner productSpinner;
     private ProductAdapter productAdapterSpinner;
     private Button btnCancelFromAPWL;
+    private Button btnAddToWaitList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,10 @@ public class AddProductToWaitListActivity extends AppCompatActivity {
                 startActivity(cancel);
             }
         });
+        btnAddToWaitList = findViewById(R.id.btnAddToWaitList);
+        btnAddToWaitList.setOnClickListener(v-> addProductToWaitList(((Product) productSpinner.getSelectedItem())));
+
+
     }
 
     private void addProductToWaitList(Product p) {
