@@ -34,12 +34,11 @@ public class MainActivity extends AppCompatActivity {
         loadingComponents();
     }
 
-    private void loadingComponents(){
+    private void loadingComponents() {
 
         Intent seeDetails = new Intent(MainActivity.this, DetailsActivity.class);
         Intent addWaitList = new Intent(MainActivity.this, AddProductToWaitListActivity.class);
         Intent addProduct = new Intent(MainActivity.this, AddProductActivity.class);
-
         Button btnWaitList = findViewById(R.id.btnAddWaitngList);
         Button btnAddProduct = findViewById(R.id.btnAddProduct);
 
@@ -48,14 +47,19 @@ public class MainActivity extends AppCompatActivity {
         ProductAdapter productAdapter = new ProductAdapter(MainActivity.this, 0, DataBase.getProducts());
         lvProducts.setAdapter(productAdapter);
 
-        lvProducts.setOnItemClickListener((parent, view, position, id) ->  {
-            Product p =(Product) parent.getItemAtPosition(position);
+        lvProducts.setOnItemClickListener((parent, view, position, id) -> {
+            Product p = (Product) parent.getItemAtPosition(position);
             Log.i("Product", p.toString());
             seeDetails.putExtra("product", p);
             startActivity(seeDetails);
         });
-        btnWaitList.setOnClickListener(v-> startActivity(addWaitList));
-        btnAddProduct.setOnClickListener(v-> startActivity(addProduct));
+
+        btnWaitList.setOnClickListener(v -> startActivity(addWaitList));
+
+        btnAddProduct.setOnClickListener(v -> {
+            Log.i("Changing to add Product Activity", "Changing to add Product Activity");
+            startActivity(addProduct);
+        });
 
     }
 }

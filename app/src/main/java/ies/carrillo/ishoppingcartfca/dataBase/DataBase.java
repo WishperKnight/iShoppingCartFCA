@@ -1,5 +1,7 @@
 package ies.carrillo.ishoppingcartfca.dataBase;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,36 +23,42 @@ public class DataBase {
 
     public static void fillList() {
 
-        Product p1 = new Product();
-        Product p2 = new Product();
-        Product p3 = new Product();
+        if(products.isEmpty()) {
 
-        p1.setName("car");
-        p1.setNote("Small toy car");
-        p1.setId(generateId());
+            Product p1 = new Product();
+            Product p2 = new Product();
+            Product p3 = new Product();
 
-        p2.setName("Eggs");
-        p2.setNote("a pack of eggs");
-        p2.setBuy(true);
-        p2.setId(generateId());
+            p1.setName("car");
+            p1.setNote("Small toy car");
+            p1.setId(generateId());
 
-        p3.setName("Hello kitty T-shirt");
-        p3.setNote("a hell kitten shirt for kids");
-        p3.setBuy(true);
-        p3.setId(generateId());
+            p2.setName("Eggs");
+            p2.setNote("a pack of eggs");
+            p2.setBuy(true);
+            p2.setId(generateId());
 
-        products.add(p1);
-        products.add(p3);
-        products.add(p3);
+            p3.setName("Hello kitty T-shirt");
+            p3.setNote("a hell kitten shirt for kids");
+            p3.setBuy(true);
+            p3.setId(generateId());
 
-        for (int i = 0; i < 50; i++) {
-            Product p4 = new Product();
-            p4.setName("toy " + i);
-            p4.setNote("A toy for kids");
-            p4.setBuy(true);
-            p4.setId(generateId());
-            products.add(p4);
+            products.add(p1);
+            products.add(p2);
+            products.add(p3);
+
+            for (int i = 0; i < 10; i++) {
+                Product p4 = new Product();
+                p4.setName("toy " + i);
+                p4.setNote("A toy for kids");
+                p4.setBuy(true);
+                p4.setId(generateId());
+                products.add(p4);
+            }
+        }else {
+            Log.i("DataBase", "DataBase already filled");
         }
+
     }
 
     public static int generateId() {
