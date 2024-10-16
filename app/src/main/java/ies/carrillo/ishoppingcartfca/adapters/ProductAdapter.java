@@ -79,7 +79,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
      * Method to provide a view for the dropdown items in a spinner
      *
      * @param position    Position of the item within the dropdown
-     * @param convertView Recycled view to reuse if possible (for performance optimization)
+     * @param convertview Recycled view to reuse if possible (for performance optimization)
      * @param parent      The parent view that this view will eventually be attached to
      * @return A view corresponding to the data at the specified position for the dropdown
      */

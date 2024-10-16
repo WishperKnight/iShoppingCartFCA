@@ -11,6 +11,8 @@ public class DataBase {
     // Static list to hold Product objects
     public static List<Product> products = new ArrayList<>();
 
+
+
     /**
      * Method to get the list of products
      *
@@ -131,10 +133,10 @@ public class DataBase {
      * @param products List of Product objects to filter
      * @return List of products with lactose
      */
-    public static List<Product> getProductsWithLactose(List<Product> products) {
+    public static List<Product> getProductsWithoutLactose(List<Product> products) {
         List<Product> productsWithLactose = new ArrayList<>(); // List to hold products with lactose
         for (Product p : products) {
-            if (p.isLactose()) {
+            if (!p.isLactose()) {
                 productsWithLactose.add(p);
             }
         }
@@ -147,10 +149,10 @@ public class DataBase {
      * @param products List of Product objects to filter
      * @return List of products with gluten
      */
-    public static List<Product> getProductsWithGluten(List<Product> products) {
+    public static List<Product> getProductsWithoutGluten(List<Product> products) {
         List<Product> productsWithGluten = new ArrayList<>(); // List to hold products with lactose
         for (Product p : products) {
-            if (p.isGluten()) {
+            if (!p.isGluten()) {
                 productsWithGluten.add(p);
             }
         }
