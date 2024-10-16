@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 import java.util.List;
 
@@ -53,6 +54,20 @@ public class ProductAdapter extends ArrayAdapter<Product> {
 
         // Find the TextView in the list item layout
         TextView tvProduct = convertView.findViewById(R.id.tvProductList);
+        if (p.isGluten()) {
+
+            convertView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.gluten_color));
+
+        } else if (p.isLactose()) {
+
+            convertView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.lactose_color));
+
+
+        } else if (p.isGluten() && p.isLactose()) {
+
+            convertView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.lactose_n_gluten_color));
+
+        }
 
         // Set the product name to the TextView
         tvProduct.setText(p.getName());
