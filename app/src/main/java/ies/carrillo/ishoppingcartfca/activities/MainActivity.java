@@ -82,12 +82,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (filterSpinner.getSelectedItem().toString().equals("No Lactose")) {
+                    Log.i("Filter", "No Lactose");
                     productAdapter[0] = new ProductAdapter(MainActivity.this, 0, DataBase.getProductsWithoutLactose(DataBase.getProducts()));
                     lvProducts.setAdapter(productAdapter[0]);
+
                 } else if (filterSpinner.getSelectedItem().toString().equals("No Gluten")) {
+                    Log.i("Filter", "No Gluten");
                     productAdapter[0] = new ProductAdapter(MainActivity.this, 0, DataBase.getProductsWithoutGluten(DataBase.getProducts()));
                     lvProducts.setAdapter(productAdapter[0]);
+
                 } else if (filterSpinner.getSelectedItem().toString().equals("All")) {
+
                     productAdapter[0] = new ProductAdapter(MainActivity.this, 0, DataBase.getProducts());
                     lvProducts.setAdapter(productAdapter[0]);
 
