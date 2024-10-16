@@ -46,6 +46,8 @@ public class DetailsActivity extends AppCompatActivity {
         TextView tvName = findViewById(R.id.tvName);
         TextView tvShortNote = findViewById(R.id.tvShortNote);
         TextView tvState = findViewById(R.id.tvState);
+        TextView tvLactose = findViewById(R.id.tvLactose);
+        TextView tvGluten = findViewById(R.id.tvGluten);
 
         // Retrieve the product from the intent, like finding the hidden treasure in a pirate movie
         Product p = (Product) data.getSerializableExtra("product");
@@ -56,6 +58,8 @@ public class DetailsActivity extends AppCompatActivity {
         tvName.setText("Nombre: " + p.getName());
         tvShortNote.setText("Nota: " + p.getNote());
         tvState.setText(p.isBuy() ? "Comprar" : "No comprar"); // Display the product's state, as crucial as the "Chosen One" prophecy
+        tvLactose.setText(p.isLactose() ? "have lactose" : "no have lactose"); // Display the product's state, as crucial as the "Chosen One" prophecy
+        tvGluten.setText(p.isGluten() ? "Have gluten" : "No have gluten"); // Display the product's state, as crucial as the "Chosen One" prophecy
 
         // Set up button listeners
         btnBack.setOnClickListener(v -> startActivity(cancel)); // Go back to the main activity, like a classic movie wrap-up

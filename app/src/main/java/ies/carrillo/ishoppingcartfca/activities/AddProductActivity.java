@@ -21,10 +21,13 @@ import ies.carrillo.ishoppingcartfca.models.Product;
 public class AddProductActivity extends AppCompatActivity {
 
     private Switch isBuy; // The switch to determine if the product is a buy item
+    private Switch isLactose; // The switch to determine if the product is a Lactose item
+    private Switch isGluten; // The switch to determine if the product is a Gluten item
     private Button btnCancel; // Button to cancel the action
     private Button btnSave; // Button to save the product
     private EditText etName; // Input for the product name
     private EditText etNote; // Input for additional notes
+
     private Intent cancel; // Intent to navigate back to the main activity
 
     @Override
@@ -63,11 +66,15 @@ public class AddProductActivity extends AppCompatActivity {
         });
 
         isBuy = findViewById(R.id.SwtToBuy); // Initialize the buy switch
+        isLactose = findViewById(R.id.swtLactose); // Initialize the buy switch
+        isGluten = findViewById(R.id.switchGluten); // Initialize the buy switch
     }
 
     @NonNull
     private Product addProduct() {
         Product p = new Product(); // Creating a new product
+        p.setGluten(isGluten.isChecked()); // Set the gluten status
+        p.setLactose(isLactose.isChecked());// Set the lactose status
         p.setId(DataBase.generateId()); // Set a unique ID for the product
         p.setName(etName.getText().toString()); // Get the product name
         p.setNote(etNote.getText().toString()); // Get the additional notes

@@ -68,6 +68,8 @@ public class EditProductActivity extends AppCompatActivity {
         TextView name = findViewById(R.id.tvProductOldName);
         TextView note = findViewById(R.id.tvProductOldNote);
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch buy = findViewById(R.id.SwitchOldState);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch lactose = findViewById(R.id.switchLactose);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch gluten = findViewById(R.id.switchGluten);
         EditText nName = findViewById(R.id.etNewName);
         EditText nNote = findViewById(R.id.etNewNote);
 
@@ -80,8 +82,10 @@ public class EditProductActivity extends AppCompatActivity {
             Log.i("Name taken: ", nName.getText().toString());
             Log.i("Note taken: ", nNote.getText().toString());
             Log.i("Buy taken: ", String.valueOf(buy.isChecked()));
+            Log.i("Lactose taken: ", String.valueOf(lactose.isChecked()));
+            Log.i("Gluten taken: ", String.valueOf(gluten.isChecked()));
 
-            editproduct(product, nName.getText().toString(), nNote.getText().toString(), buy.isChecked());
+            editproduct(product, nName.getText().toString(), nNote.getText().toString(), buy.isChecked(), lactose.isChecked(), gluten.isChecked());
             showEdited.putExtra("product", product);
             startActivity(showEdited);
         });
@@ -98,16 +102,20 @@ public class EditProductActivity extends AppCompatActivity {
      * @param buy  boolean for if it is going to be buy
      * @return Product edited
      */
-    private Product editproduct(@NonNull Product p, String name, String note, boolean buy) {
+    private Product editproduct(@NonNull Product p, String name, String note, boolean buy, boolean lactose, boolean gluten) {
         Log.i("Button pressed", "Product editing");
 
         Log.i("Name: ", name);
         Log.i("Note: ", note);
         Log.i("Buy: ", String.valueOf(buy));
+        Log.i("Lactose: ", String.valueOf(lactose));
+        Log.i("Gluten: ", String.valueOf(gluten));
 
         p.setBuy(buy);
         p.setName(name);
         p.setNote(note);
+        p.setLactose(lactose);
+        p.setGluten(gluten);
 
         Log.i("Product edited", p.toString());
         DataBase.getProducts().set(p.getId() - 1, p);
@@ -123,9 +131,14 @@ public class EditProductActivity extends AppCompatActivity {
         TextView name = findViewById(R.id.tvProductOldName);
         TextView note = findViewById(R.id.tvProductOldNote);
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch buy = findViewById(R.id.SwitchOldState);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch lactose = findViewById(R.id.switchLactose);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch gluten = findViewById(R.id.switchGluten);
+
         name.setText(p.getName());
         note.setText(p.getNote());
         buy.setChecked(p.isBuy());
+        lactose.setChecked(p.isLactose());
+        gluten.setChecked(p.isGluten());
     }
 }
 

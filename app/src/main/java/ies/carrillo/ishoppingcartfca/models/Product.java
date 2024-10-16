@@ -8,12 +8,32 @@ public class Product implements Serializable {
     private int id;
     private String note = "", name = "";
     private boolean buy = false;
+    private boolean Lactose = false;
+    private boolean gluten = false;
+
 
     //empty constructor
     public Product() {
     }
 
     //Getters and setters
+
+    public boolean isLactose() {
+        return Lactose;
+    }
+
+    public void setLactose(boolean lactose) {
+        Lactose = lactose;
+    }
+
+    public boolean isGluten() {
+        return gluten;
+    }
+
+    public void setGluten(boolean gluten) {
+        this.gluten = gluten;
+    }
+
     public int getId() {
         return id;
     }
@@ -45,15 +65,16 @@ public class Product implements Serializable {
     public void setBuy(boolean buy) {
         this.buy = buy;
     }
-    @NonNull
+
     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
                 ", note='" + note + '\'' +
+                ", name='" + name + '\'' +
                 ", buy=" + buy +
+                ", Lactose=" + Lactose +
+                ", gluten=" + gluten +
                 '}';
     }
-
 }

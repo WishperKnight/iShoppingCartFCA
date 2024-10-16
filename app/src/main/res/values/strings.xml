@@ -14,4 +14,7 @@
     <string name="state">State:</string>
     <string name="edit_product">Edit product</string>
     <string name="back">Back</string>
+    <string name="gluten">Gluten: </string>
+    <string name="lactose">Lactose:</string>
+    <string name="edit_product_activity">Edit Product Activity</string>
 </resources>

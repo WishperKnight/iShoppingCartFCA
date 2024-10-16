@@ -109,4 +109,36 @@ public class DataBase {
         }
         return productsDiferentsToBuy; // Return the filtered list
     }
+
+    /**
+     * Method to get a list of products with lactose
+     *
+     * @param products List of Product objects to filter
+     * @return List of products with lactose
+     */
+    public static List<Product> getProductsWithLactose(List<Product> products) {
+        List<Product> productsWithLactose = new ArrayList<>(); // List to hold products with lactose
+        for (Product p : products) {
+            if (p.isLactose()) {
+                productsWithLactose.add(p);
+            }
+        }
+        return productsWithLactose;
+    }
+
+    /**
+     * Method to get a list of products with gluten
+     * @param products List of Product objects to filter
+     * @return List of products with gluten
+     */
+    public static List<Product> getProductsWithGluten(List<Product> products) {
+        List<Product> productsWithGluten = new ArrayList<>(); // List to hold products with lactose
+        for (Product p : products) {
+            if (p.isGluten()) {
+                productsWithGluten.add(p);
+            }
+        }
+        return productsWithGluten;
+    }
 }
+
