@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
         <TextView
             android:id="@+id/tvEditTittle"
             android:layout_width="match_parent"
@@ -65,29 +66,32 @@
                     android:inputType="textMultiLine" />
             </TableRow>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <Switch
-                    android:id="@+id/SwitchOldState"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Buy"
-                    tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
-                <Switch
-                    android:id="@+id/switchLactose"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lactose" />
-                <Switch
-                    android:id="@+id/switchGluten"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/gluten" />
-            </TableRow>
-
         </TableLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="fill_horizontal"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/SwitchOldState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buy"
+                tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
+
+            <Switch
+                android:id="@+id/switchLactose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lactose" />
+
+            <Switch
+                android:id="@+id/switchGluten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gluten" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -44,17 +44,23 @@ public class DataBase {
             // Set properties for the first product
             p1.setName("car");
             p1.setNote("Small toy car");
+            p1.setLactose(true);
+            p1.setGluten(false);
             p1.setId(generateId()); // Generate a unique ID
 
             // Set properties for the second product
             p2.setName("Eggs");
             p2.setNote("A pack of eggs");
+            p2.setLactose(true);
+            p2.setGluten(false);
             p2.setBuy(true); // Mark this product as a buy item
             p2.setId(generateId()); // Generate a unique ID
 
             // Set properties for the third product
             p3.setName("Hello kitty T-shirt");
             p3.setNote("A Hello Kitty shirt for kids");
+            p3.setLactose(false);
+            p3.setGluten(true);
             p3.setBuy(true); // Mark this product as a buy item
             p3.setId(generateId()); // Generate a unique ID
 
@@ -66,9 +72,18 @@ public class DataBase {
             // Create additional toy products in a loop
             for (int i = 0; i < 10; i++) {
                 Product p4 = new Product();
-                p4.setName("toy " + i);
-                p4.setNote("A toy for kids");
-                p4.setBuy(true); // Mark this product as a buy item
+                p4.setName("Survival food " + i);
+                if (i % 2 == 0) {
+                    p4.setGluten(true);
+                    p4.setLactose(false);
+                    p4.setBuy(false); // Mark this product as a buy item
+                } else {
+                    p4.setGluten(false);
+                    p4.setLactose(true);
+                    p4.setBuy(true); // Mark this product as a buy item
+                }
+
+                p4.setNote("Liofilized food for real survivors like Jacob");
                 p4.setId(generateId()); // Generate a unique ID
                 products.add(p4); // Add the product to the list
             }
@@ -128,6 +143,7 @@ public class DataBase {
 
     /**
      * Method to get a list of products with gluten
+     *
      * @param products List of Product objects to filter
      * @return List of products with gluten
      */

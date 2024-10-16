@@ -65,9 +65,9 @@ public class AddProductActivity extends AppCompatActivity {
             startActivity(cancel); // Go back to the main activity
         });
 
-        isBuy = findViewById(R.id.SwtToBuy); // Initialize the buy switch
+        isBuy = findViewById(R.id.swtToBuy); // Initialize the buy switch
         isLactose = findViewById(R.id.swtLactose); // Initialize the buy switch
-        isGluten = findViewById(R.id.switchGluten); // Initialize the buy switch
+        isGluten = findViewById(R.id.swtGluten); // Initialize the buy switch
     }
 
     @NonNull
